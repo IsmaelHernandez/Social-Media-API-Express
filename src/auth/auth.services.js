@@ -57,7 +57,23 @@ const postRecoveryToken = (req, res) => {
         })
 }
 
+const patchPassword = (req, res) => {
+    const id = req.params.id 
+    const {password} = req.body 
 
+    authControllers.changePassword(id, password)
+        .then(data => {
+            console.log('service:',data)
+            if(data){
+                res.status(200).json({message: 'Password updated succesfully'})
+            } else {
+                res.status(400).json({message: 'URL expired'})
+            }
+        })
+        .catch((err) => {
+            res.status(400).json({message: err.message})
+        })
+}
 
 
 
@@ -67,5 +83,6 @@ const postRecoveryToken = (req, res) => {
 
 module.exports = {
     postLogin,
-    postRecoveryToken
+    postRecoveryToken,
+    patchPassword
 }

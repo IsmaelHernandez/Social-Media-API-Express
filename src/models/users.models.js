@@ -40,6 +40,17 @@ const Users = db.define('users' ,{
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    nickName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
+    profileImg: {
+        type: DataTypes.STRING,
+        validate: {
+            isUrl: true
+        }
+    },
     role: {
         type: DataTypes.STRING,
         defaultValue: 'normal'
