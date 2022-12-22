@@ -14,7 +14,7 @@ const findPostById = async (id) => {
         }
     })
 
-    return data
+    return data 
 }
 
 const createPosts = async (obj) => {
