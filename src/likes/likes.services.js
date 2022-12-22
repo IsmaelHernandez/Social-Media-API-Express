@@ -5,7 +5,12 @@ const getAllLikesByPosts = (req, res) => {
     LikesControllers.getAllLikesFromPost(id)
         .then(data => {
             if(data){
-                res.status(200).json(data)
+                res.status(200).json({
+                    
+                    //contador
+                    count : data.length,
+                    users: data
+                })
             }else{
                 res.status(404).json({message: 'Invalid ID'})
             }

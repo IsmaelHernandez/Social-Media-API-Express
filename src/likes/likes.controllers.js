@@ -19,7 +19,7 @@ const findAllLikesFromPost = async (postId) => {
         }
     })
 
-    return data
+    return data.map(like => like.user)
 }
 
 const createLike = async (obj) => {
@@ -31,7 +31,12 @@ const createLike = async (obj) => {
         }
     })
     if (validate) {
-        return null
+        const value = await Likes.destroy({
+            where: {
+                id: value.id
+            }
+        })
+        return value
     }
     const data = await Likes.create({
         id: uuid.v4(),
