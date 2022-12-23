@@ -50,6 +50,6 @@ const createLike = async (obj) => {
 
 
 module.exports = {
-    getAllLikesFromPost,
+    findAllLikesFromPost,
     createLike,
 }

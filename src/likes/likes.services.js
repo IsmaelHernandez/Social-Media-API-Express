@@ -2,7 +2,7 @@ const LikesControllers = require('./likes.controllers')
 
 const getAllLikesByPosts = (req, res) => {
     const id = req.params.id
-    LikesControllers.getAllLikesFromPost(id)
+    LikesControllers.findAllLikesFromPost(id)
         .then(data => {
             if(data){
                 res.status(200).json({
